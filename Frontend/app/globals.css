@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --radius: 1.25rem;
+    --bg-primary: #0f1110;
+    --bg-secondary: #161817;
+    --text-primary: #e6e8e7;
+    --text-secondary: #9ca39f;
+    --border-light: #2a2f2c;
+    --selection-color: #10b981; /* emerald-500 */
+  }
+
+  :root.light {
+    --bg-primary: #f4f6f5;
+    --bg-secondary: #ffffff;
+    --text-primary: #1a1e1c;
+    --text-secondary: #4a524e;
+    --border-light: #e2e5e3;
+    --selection-color: #059669; /* emerald-600 for better contrast on light */
+  }
+
+  body {
+    @apply antialiased m-0 p-0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-inter), system-ui, sans-serif;
+    transition: background-color 0.3s ease, color 0.2s ease;
+  }
+
+  /* Custom text selection colors */
+  ::selection {
+    background-color: var(--selection-color);
+    color: white;
+  }
+
+  /* For Firefox */
+  ::-moz-selection {
+    background-color: var(--selection-color);
+    color: white;
+  }
+}
+
+@layer utilities {
+  .typing-dot {
+    @apply w-1.5 h-1.5 rounded-full;
+    animation: typing 1.4s infinite ease-in-out;
+  }
+
+  @keyframes typing {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.4;
+    }
+    50% {
+      transform: translateY(-4px);
+      opacity: 1;
+    }
+  }
+
+  /* Smooth scrolling */
+  * {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-light);
+    border-radius: 20px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+  }
+}
